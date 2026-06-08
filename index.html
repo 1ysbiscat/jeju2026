@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제주 2박3일 여행 계획표</title>
+<style>
+  :root { --teal: #0f766e; --cyan: #0e7490; --bg: #f1f5f9; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: rgba(15,118,110,0.15); }
+  body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; color: #1f2937; background: var(--bg); margin: 0; padding: 20px 22px 50px; line-height: 1.5; -webkit-text-size-adjust: 100%; }
+  header { max-width: 1500px; margin: 0 auto 16px; }
+  h1 { font-size: 26px; color: var(--teal); margin: 0 0 4px; letter-spacing: -0.5px; }
+  .sub { color: #6b7280; font-size: 14px; }
+  .hint { background: #ecfeff; border: 1px solid #a5f3fc; color: #155e75; font-size: 12.5px; padding: 8px 13px; border-radius: 9px; margin-top: 10px; display: inline-block; }
+  .hint b { color: #0e7490; }
+  .flight-bar { max-width: 1500px; margin: 0 auto 16px; display: flex; gap: 14px; }
+  .flight-bar .fcard { flex: 1; background: #fff; border-radius: 12px; padding: 12px 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 14px; }
+  .flight-bar .fl-label { font-size: 13px; font-weight: 700; color: #fff; background: var(--teal); padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+  .flight-bar .fl-main { font-weight: 700; font-size: 15px; }
+  .flight-bar .fl-sub { font-size: 12px; color: #6b7280; }
+  .cols { max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
+  .col { background: #fff; border-radius: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); overflow: hidden; }
+  .col-head { font-size: 16px; font-weight: 700; color: #fff; background: var(--cyan); padding: 12px 16px; }
+  .col-head .meta { display: block; font-weight: 400; font-size: 12px; opacity: 0.9; margin-top: 2px; }
+  .item { padding: 11px 14px; border-bottom: 1px solid #f1f5f9; }
+  .item:last-child { border-bottom: none; }
+  .row { display: flex; gap: 10px; align-items: flex-start; }
+  .time { color: var(--teal); font-weight: 700; font-size: 12.5px; min-width: 42px; padding-top: 1px; }
+  .body { flex: 1; min-width: 0; }
+  .pname { font-weight: 700; font-size: 14px; margin-bottom: 2px; line-height: 1.35; }
+  .tag { font-size: 10.5px; font-weight: 600; padding: 1px 6px; border-radius: 20px; margin-left: 4px; vertical-align: middle; white-space: nowrap; }
+  .tag.meal { background: #ffedd5; color: #c2410c; }
+  .tag.act { background: #dbeafe; color: #1d4ed8; }
+  .tag.drink { background: #ede9fe; color: #7c3aed; }
+  .tag.cafe { background: #f3e8ff; color: #9333ea; }
+  .desc { font-size: 12.5px; color: #374151; margin-bottom: 2px; }
+  .memo { font-size: 11px; color: #6b7280; }
+  .btns { margin-top: 7px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .btn { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; font-weight: 600; text-decoration: none; padding: 6px 11px; border-radius: 8px; }
+  .btn-map { background: #03c75a; color: #fff; }
+  .btn-book { background: #fff; color: var(--teal); border: 1.5px solid var(--teal); }
+  .note { background: #fffbeb; border-left: 3px solid #f59e0b; padding: 9px 13px; margin: 10px 12px 12px; font-size: 11.5px; border-radius: 0 6px 6px 0; }
+  .bottom { max-width: 1500px; margin: 16px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .card { background: #fff; border-radius: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); overflow: hidden; }
+  .card-head { font-size: 15px; font-weight: 700; color: #fff; background: var(--teal); padding: 11px 16px; }
+  .cl-item { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; display: flex; gap: 10px; }
+  .cl-item:last-child { border-bottom: none; }
+  .cl-box { color: var(--teal); font-weight: 700; font-size: 15px; }
+  .cl-q { font-weight: 700; font-size: 13.5px; }
+  .cl-m { font-size: 11px; color: #6b7280; }
+  .warn { padding: 14px 16px; font-size: 12.5px; }
+  .warn b { color: #b91c1c; }
+  .warn .blk { margin-bottom: 10px; }
+  .foot { text-align: center; color: #9ca3af; font-size: 11px; margin-top: 20px; }
+  @media (max-width: 900px) {
+    .cols { grid-template-columns: 1fr; }
+    .bottom { grid-template-columns: 1fr; }
+    .flight-bar { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>제주 2박3일 여행 계획표</h1>
+  <div class="sub">2026. 7. 12 (일) ~ 7. 14 (화) · 커플 여행</div>
+  <div class="hint">📍 <b>초록 버튼</b> = 네이버지도 연결 · <b>예약 버튼</b> = 예약/웨이팅 페이지</div>
+</header>
+
+<div class="flight-bar">
+  <div class="fcard"><span class="fl-label">가는편</span><div><div class="fl-main">진에어 LJ509 · 김포 12:45 → 제주 14:00</div><div class="fl-sub">7/12(일) · 예약 C257J9</div></div></div>
+  <div class="fcard"><span class="fl-label">오는편</span><div><div class="fl-main">제주항공 7C134 · 제주 20:05 → 김포 21:20</div><div class="fl-sub">7/14(화) · 예약 Q7MK3V</div></div></div>
+</div>
+
+<div class="cols">
+
+  <div class="col">
+    <div class="col-head">📅 Day 1 — 7/12 (일)<span class="meta">중문 · 서귀포권</span></div>
+    <div class="item"><div class="row"><div class="time">14:00</div><div class="body"><div class="pname">제주공항 도착</div><div class="desc">짐 찾고 이동</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">14:20</div><div class="body"><div class="pname">공항 커피 구매<span class="tag cafe">카페</span></div><div class="desc">픽업 전 테이크아웃</div><div class="memo">☕ 여친 커피 타임</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">14:40</div><div class="body"><div class="pname">렌터카 픽업</div><div class="desc">차량 수령 → 출발</div><div class="memo">완전자차 추천 · 차 상태 사진 체크</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">15:30</div><div class="body"><div class="pname">대포 주상절리대</div><div class="desc">육각 절벽 감상 (30분)</div><div class="memo">입장 2,000원 · 17:25 마감</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EC%A4%91%EB%AC%B8%20%EB%8C%80%ED%8F%AC%20%EC%A3%BC%EC%83%81%EC%A0%88%EB%A6%AC%EB%8C%80" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">16:30</div><div class="body"><div class="pname">중문색달해변</div><div class="desc">산책 · 사진</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%A4%91%EB%AC%B8%EC%83%89%EB%8B%AC%ED%95%B4%EB%B3%80" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">17:00</div><div class="body"><div class="pname">Cafe Ocean<span class="tag cafe">카페</span></div><div class="desc">색달해변 오션뷰 커피</div><div class="memo">☕ 여친 커피 타임 · 라바카스테라</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%B9%B4%ED%8E%98%EC%98%A4%EC%85%98%20%EC%83%89%EB%8B%AC" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">18:00</div><div class="body"><div class="pname">그랑블루요트 선셋<span class="tag act">액티비티</span></div><div class="desc">노을 + 바다뷰 (와인·맥주)</div><div class="memo">★1일 전 예약필수 · 20분 전 도착 · 운전 전이라 가볍게만</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EA%B7%B8%EB%9E%91%EB%B8%94%EB%A3%A8%EC%9A%94%ED%8A%B8%20%EC%A4%91%EB%AC%B8" target="_blank">📍 지도</a><a class="btn btn-book" href="https://www.myrealtrip.com/search?q=%EC%A0%9C%EC%A3%BC%20%EC%9A%94%ED%8A%B8%20%EC%84%A0%EC%85%8B" target="_blank">🎫 예약</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">20:00</div><div class="body"><div class="pname">자리돔횟집<span class="tag meal">식사</span><span class="tag drink">술</span></div><div class="desc">고등어회 · 생선구이 + 한잔</div><div class="memo">🍶 차는 숙소에 두고 택시 · 21:30까지</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%9E%90%EB%A6%AC%EB%8F%94%ED%9A%9F%EC%A7%91%20%EC%84%9C%EA%B7%80%ED%8F%AC" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">22:00</div><div class="body"><div class="pname">서귀포/중문 숙소</div><div class="desc">1박 (택시 복귀)</div></div></div></div>
+    <div class="note">🍶 요트 술은 맛만(운전 있음). 본격 술자리는 저녁 — 체크인 → 차 두고 → 택시로 횟집.</div>
+  </div>
+
+  <div class="col">
+    <div class="col-head">📅 Day 2 — 7/13 (월)<span class="meta">서귀포 → 동부 성산</span></div>
+    <div class="item"><div class="row"><div class="time">08:30</div><div class="body"><div class="pname">숙소 조식 / 카페<span class="tag meal">식사</span></div><div class="desc">아침 — 간단히</div><div class="memo">여친 아침 필수</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">10:00</div><div class="body"><div class="pname">서귀포 잠수함<span class="tag act">액티비티</span></div><div class="desc">수심 40m 잠항 (2시간)</div><div class="memo">예약 권장 · 풍랑 시 운항확인</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%84%9C%EA%B7%80%ED%8F%AC%EC%9E%A0%EC%88%98%ED%95%A8" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">12:30</div><div class="body"><div class="pname">올레왕갈치<span class="tag meal">식사</span></div><div class="desc">갈치조림 + 갈치구이</div><div class="memo">잠수함서 차 10분 · 낮이라 술 패스</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%98%AC%EB%A0%88%EC%99%95%EA%B0%88%EC%B9%98" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">14:00</div><div class="body"><div class="pname">식후 커피<span class="tag cafe">카페</span></div><div class="desc">이동 길 / 아쿠아플라넷 내 카페</div><div class="memo">☕ 여친 커피 타임 · 가볍게</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">14:30</div><div class="body"><div class="pname">아쿠아플라넷 제주<span class="tag act">액티비티</span></div><div class="desc">아쿠아리움 + 해녀 공연 (2~3h)</div><div class="memo">실내라 비와도 OK · 18시 마감</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%95%84%EC%BF%A0%EC%95%84%ED%94%8C%EB%9D%BC%EB%84%B7%20%EC%A0%9C%EC%A3%BC" target="_blank">📍 지도</a><a class="btn btn-book" href="https://www.aquaplanet.co.kr/jeju/" target="_blank">🎫 예약</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">17:30</div><div class="body"><div class="pname">광치기해변</div><div class="desc">성산일출봉 배경 사진</div><div class="memo">일몰 시간대 분위기 좋음</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EA%B4%91%EC%B9%98%EA%B8%B0%ED%95%B4%EB%B3%80" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">19:00</div><div class="body"><div class="pname">제주본연 흑돼지<span class="tag meal">식사</span><span class="tag drink">술</span></div><div class="desc">흑돼지 삼겹살 + 소주</div><div class="memo">🍶 평점 5.0 · 차 두고 도보/택시</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%EB%B3%B8%EC%97%B0%20%ED%9D%91%EB%8F%BC%EC%A7%80%20%EC%84%B1%EC%82%B0%EB%B3%B8%EC%A0%90" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">21:00</div><div class="body"><div class="pname">동부 성산 숙소</div><div class="desc">1박 (도보/택시 복귀)</div></div></div></div>
+    <div class="note">🍶 낮 일정 끝내고 체크인 → 차 두고 → 흑돼지집. 성산 숙소를 식당 근처로 잡으면 도보권.</div>
+  </div>
+
+  <div class="col">
+    <div class="col-head">📅 Day 3 — 7/14 (화)<span class="meta">성산권 · 저녁 비행기</span></div>
+    <div class="item"><div class="row"><div class="time">08:00</div><div class="body"><div class="pname">숙소 조식 / 카페<span class="tag meal">식사</span></div><div class="desc">아침 — 등반 전 가볍게</div><div class="memo">여친 아침 필수</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">09:30</div><div class="body"><div class="pname">성산일출봉</div><div class="desc">정상 등반 (왕복 1시간)</div><div class="memo">유네스코 · 입장 5,000원</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%84%B1%EC%82%B0%EC%9D%BC%EC%B6%9C%EB%B4%89" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">11:00</div><div class="body"><div class="pname">가시아방국수<span class="tag meal">식사</span></div><div class="desc">고기국수 · 비빔국수 · 수육</div><div class="memo">★웨이팅 심함 → 캐치테이블 원격줄서기(앱 미리 가입+결제등록) · 일출봉 등반 중 걸기 · 수요일 휴무(화 OK)</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EA%B0%80%EC%8B%9C%EC%95%84%EB%B0%A9%EA%B5%AD%EC%88%98" target="_blank">📍 지도</a><a class="btn btn-book" href="https://app.catchtable.co.kr/ct/shop/abangnoodle_jeju" target="_blank">🎫 캐치테이블</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">12:30</div><div class="body"><div class="pname">프리츠커피 (Fritz)<span class="tag cafe">카페</span></div><div class="desc">일출봉 정면뷰 + 베이커리</div><div class="memo">☕ 여친 커피 타임 · 평점 4.6 · 빵 맛집</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%ED%94%84%EB%A6%AC%EC%B8%A0%EC%BB%A4%ED%94%BC%20%EC%84%B1%EC%82%B0" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">14:00</div><div class="body"><div class="pname">자유시간</div><div class="desc">동부 해안 드라이브 / 쇼핑</div><div class="memo">렌터카 반납 시간 역산</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">17:30</div><div class="body"><div class="pname">렌터카 반납 → 공항</div><div class="memo">반납 후 셔틀</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">18:30</div><div class="body"><div class="pname">제주공항</div><div class="desc">체크인 · 저녁</div><div class="memo">국내선 1시간 전 도착</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">20:05</div><div class="body"><div class="pname">✈️ 제주 → 김포 출발</div></div></div></div>
+  </div>
+
+</div>
+
+<div class="bottom">
+  <div class="card">
+    <div class="card-head">✅ 예약 · 체크 마감</div>
+    <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">요트 (그랑블루)</div><div class="cl-m">최소 1일 전 · KKday/마이리얼트립 · ☎ 064-739-7776</div></div></div>
+    <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">잠수함</div><div class="cl-m">미리 예약 · ☎ 064-732-6060 · 풍랑 확인</div></div></div>
+    <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">아쿠아플라넷</div><div class="cl-m">온라인 사전구매 할인 · ☎ 1833-7001</div></div></div>
+    <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">가시아방국수 웨이팅</div><div class="cl-m">캐치테이블 앱 미리 가입 + 결제수단 등록</div></div></div>
+    <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">렌터카</div><div class="cl-m">완전자차 옵션 · 제주패스·카모아 비교</div></div></div>
+    <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">흑돼지 / 갈치 / 횟집</div><div class="cl-m">주말·피크 예약 권장 · 올레왕갈치 ☎ 064-732-2022</div></div></div>
+    <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">숙소</div><div class="cl-m">★1일차 중문·서귀포 / 2일차 성산 (저녁 식당 도보권)</div></div></div>
+  </div>
+  <div class="card">
+    <div class="card-head">⚠️ 주의사항</div>
+    <div class="warn">
+      <div class="blk"><b>🚗 음주운전 절대 금지</b> — 1·2일차 저녁은 술자리. 차는 숙소에 두고 도보/택시 이동. 숙소를 저녁 식당 근처로 잡으면 택시비도 아끼고 편해. 다음날 아침 차 가지러 갈 동선만 체크.</div>
+      <div><b>⚠️ 7월 날씨</b> — 출발 3~4일 전 예보 확인. 비 와도 잠수함·아쿠아플라넷(실내)은 진행 가능하니 우천에도 비교적 안전한 구성.</div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">제주 2박3일 · 액티비티(요트·잠수함·아쿠아플라넷) + 맛집(갈치·흑돼지·회) + 카페 + 한잔</div>
+
+</body>
+</html>
