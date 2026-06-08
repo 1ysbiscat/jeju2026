@@ -58,6 +58,23 @@
     .flight-bar { flex-direction: column; }
   }
 </style>
+
+<script>
+function openNaver(lat, lng, name) {
+  var appUrl = "nmap://place?lat=" + lat + "&lng=" + lng + "&name=" + encodeURIComponent(name) + "&appname=jeju2026.github.io";
+  var webUrl = "https://map.naver.com/p/search/" + encodeURIComponent(name);
+  var now = Date.now();
+  // 앱 실행 시도
+  window.location = appUrl;
+  // 1.2초 안에 페이지 이탈(앱 전환) 없으면 웹으로 폴백
+  setTimeout(function() {
+    if (Date.now() - now < 1500) {
+      window.open(webUrl, "_blank");
+    }
+  }, 1200);
+  return false;
+}
+</script>
 </head>
 <body>
 
@@ -75,15 +92,20 @@
 <div class="cols">
 
   <div class="col">
-    <div class="col-head">📅 Day 1 — 7/12 (일)<span class="meta">중문 · 서귀포권</span></div>
-    <div class="item"><div class="row"><div class="time">14:00</div><div class="body"><div class="pname">제주공항 도착</div><div class="desc">짐 찾고 이동</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="col-head">📅 Day 1 — 7/12 (일)<span class="meta">출발 · 중문 · 서귀포권</span></div>
+    <div class="item"><div class="row"><div class="time">전날</div><div class="body"><div class="pname">🌙 토요일 밤</div><div class="desc">여친 퇴근 후 우리집에서 1박</div><div class="memo">강남구 테헤란로37길 34 · 다음날 같이 출발</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">09:30</div><div class="body"><div class="pname">기상 · 조식<span class="tag meal">식사</span></div><div class="desc">집에서 or 가는 길 카페</div><div class="memo">여친 아침 필수 · 출발 전 가볍게</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">10:30</div><div class="body"><div class="pname">집에서 김포공항 출발 🚗</div><div class="desc">자차 운전 · 약 30~45분</div><div class="memo">집(테헤란로37길 34) → 김포공항 · 주말 낮 기준 여유있게</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(37.5583,126.7906,'김포국제공항 국내선')">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">11:15</div><div class="body"><div class="pname">김포공항 도착 · 주차 🅿️</div><div class="desc">공항 주차장에 자차 주차</div><div class="memo">★주차 정보 추후 입력 (주차동·층·구역 메모) · 국내선 1시간 전 도착</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">12:45</div><div class="body"><div class="pname">✈️ 김포 → 제주 출발</div><div class="desc">진에어 LJ509 · 제주 14:00 도착</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">14:00</div><div class="body"><div class="pname">제주공항 도착</div><div class="desc">짐 찾고 이동</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.507,126.4927,'제주국제공항')">📍 지도</a></div></div></div></div>
     <div class="item"><div class="row"><div class="time">14:20</div><div class="body"><div class="pname">공항 커피 구매<span class="tag cafe">카페</span></div><div class="desc">픽업 전 테이크아웃</div><div class="memo">☕ 여친 커피 타임</div></div></div></div>
     <div class="item"><div class="row"><div class="time">14:40</div><div class="body"><div class="pname">렌터카 픽업</div><div class="desc">차량 수령 → 출발</div><div class="memo">완전자차 추천 · 차 상태 사진 체크</div></div></div></div>
-    <div class="item"><div class="row"><div class="time">15:30</div><div class="body"><div class="pname">대포 주상절리대</div><div class="desc">육각 절벽 감상 (30분)</div><div class="memo">입장 2,000원 · 17:25 마감</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%20%EC%A4%91%EB%AC%B8%20%EB%8C%80%ED%8F%AC%20%EC%A3%BC%EC%83%81%EC%A0%88%EB%A6%AC%EB%8C%80" target="_blank">📍 지도</a></div></div></div></div>
-    <div class="item"><div class="row"><div class="time">16:30</div><div class="body"><div class="pname">중문색달해변</div><div class="desc">산책 · 사진</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%A4%91%EB%AC%B8%EC%83%89%EB%8B%AC%ED%95%B4%EB%B3%80" target="_blank">📍 지도</a></div></div></div></div>
-    <div class="item"><div class="row"><div class="time">17:00</div><div class="body"><div class="pname">Cafe Ocean<span class="tag cafe">카페</span></div><div class="desc">색달해변 오션뷰 커피</div><div class="memo">☕ 여친 커피 타임 · 라바카스테라</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%B9%B4%ED%8E%98%EC%98%A4%EC%85%98%20%EC%83%89%EB%8B%AC" target="_blank">📍 지도</a></div></div></div></div>
-    <div class="item"><div class="row"><div class="time">18:00</div><div class="body"><div class="pname">그랑블루요트 선셋<span class="tag act">액티비티</span></div><div class="desc">노을 + 바다뷰 (와인·맥주)</div><div class="memo">★1일 전 예약필수 · 20분 전 도착 · 운전 전이라 가볍게만</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EA%B7%B8%EB%9E%91%EB%B8%94%EB%A3%A8%EC%9A%94%ED%8A%B8%20%EC%A4%91%EB%AC%B8" target="_blank">📍 지도</a><a class="btn btn-book" href="https://www.myrealtrip.com/search?q=%EC%A0%9C%EC%A3%BC%20%EC%9A%94%ED%8A%B8%20%EC%84%A0%EC%85%8B" target="_blank">🎫 예약</a></div></div></div></div>
-    <div class="item"><div class="row"><div class="time">20:00</div><div class="body"><div class="pname">자리돔횟집<span class="tag meal">식사</span><span class="tag drink">술</span></div><div class="desc">고등어회 · 생선구이 + 한잔</div><div class="memo">🍶 차는 숙소에 두고 택시 · 21:30까지</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%9E%90%EB%A6%AC%EB%8F%94%ED%9A%9F%EC%A7%91%20%EC%84%9C%EA%B7%80%ED%8F%AC" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">15:30</div><div class="body"><div class="pname">대포 주상절리대</div><div class="desc">육각 절벽 감상 (30분)</div><div class="memo">입장 2,000원 · 17:25 마감</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.2367938,126.4254867,'대포주상절리대')">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">16:30</div><div class="body"><div class="pname">중문색달해변</div><div class="desc">산책 · 사진</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.2451968,126.4111861,'중문색달해변')">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">17:00</div><div class="body"><div class="pname">Cafe Ocean<span class="tag cafe">카페</span></div><div class="desc">색달해변 오션뷰 커피</div><div class="memo">☕ 여친 커피 타임 · 라바카스테라</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.2459574,126.4130537,'카페오션')">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">18:00</div><div class="body"><div class="pname">그랑블루요트 선셋<span class="tag act">액티비티</span></div><div class="desc">노을 + 바다뷰 (와인·맥주)</div><div class="memo">★1일 전 예약필수 · 20분 전 도착 · 운전 전이라 가볍게만</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.2386126,126.439317,'그랑블루요트')">📍 지도</a><a class="btn btn-book" href="https://www.myrealtrip.com/search?q=%EC%A0%9C%EC%A3%BC%20%EC%9A%94%ED%8A%B8%20%EC%84%A0%EC%85%8B" target="_blank">🎫 예약</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">20:00</div><div class="body"><div class="pname">자리돔횟집<span class="tag meal">식사</span><span class="tag drink">술</span></div><div class="desc">고등어회 · 생선구이 + 한잔</div><div class="memo">🍶 차는 숙소에 두고 택시 · 21:30까지</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.248,126.565,'자리돔횟집')">📍 지도</a></div></div></div></div>
     <div class="item"><div class="row"><div class="time">22:00</div><div class="body"><div class="pname">서귀포/중문 숙소</div><div class="desc">1박 (택시 복귀)</div></div></div></div>
     <div class="note">🍶 요트 술은 맛만(운전 있음). 본격 술자리는 저녁 — 체크인 → 차 두고 → 택시로 횟집.</div>
   </div>
@@ -91,12 +113,12 @@
   <div class="col">
     <div class="col-head">📅 Day 2 — 7/13 (월)<span class="meta">서귀포 → 동부 성산</span></div>
     <div class="item"><div class="row"><div class="time">08:30</div><div class="body"><div class="pname">숙소 조식 / 카페<span class="tag meal">식사</span></div><div class="desc">아침 — 간단히</div><div class="memo">여친 아침 필수</div></div></div></div>
-    <div class="item"><div class="row"><div class="time">10:00</div><div class="body"><div class="pname">서귀포 잠수함<span class="tag act">액티비티</span></div><div class="desc">수심 40m 잠항 (2시간)</div><div class="memo">예약 권장 · 풍랑 시 운항확인</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%84%9C%EA%B7%80%ED%8F%AC%EC%9E%A0%EC%88%98%ED%95%A8" target="_blank">📍 지도</a></div></div></div></div>
-    <div class="item"><div class="row"><div class="time">12:30</div><div class="body"><div class="pname">올레왕갈치<span class="tag meal">식사</span></div><div class="desc">갈치조림 + 갈치구이</div><div class="memo">잠수함서 차 10분 · 낮이라 술 패스</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%98%AC%EB%A0%88%EC%99%95%EA%B0%88%EC%B9%98" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">10:00</div><div class="body"><div class="pname">서귀포 잠수함<span class="tag act">액티비티</span></div><div class="desc">수심 40m 잠항 (2시간)</div><div class="memo">예약 권장 · 풍랑 시 운항확인</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.2406,126.564,'서귀포잠수함')">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">12:30</div><div class="body"><div class="pname">올레왕갈치<span class="tag meal">식사</span></div><div class="desc">갈치조림 + 갈치구이</div><div class="memo">잠수함서 차 10분 · 낮이라 술 패스</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.2485066,126.5628809,'올레왕갈치')">📍 지도</a></div></div></div></div>
     <div class="item"><div class="row"><div class="time">14:00</div><div class="body"><div class="pname">식후 커피<span class="tag cafe">카페</span></div><div class="desc">이동 길 / 아쿠아플라넷 내 카페</div><div class="memo">☕ 여친 커피 타임 · 가볍게</div></div></div></div>
-    <div class="item"><div class="row"><div class="time">14:30</div><div class="body"><div class="pname">아쿠아플라넷 제주<span class="tag act">액티비티</span></div><div class="desc">아쿠아리움 + 해녀 공연 (2~3h)</div><div class="memo">실내라 비와도 OK · 18시 마감</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%95%84%EC%BF%A0%EC%95%84%ED%94%8C%EB%9D%BC%EB%84%B7%20%EC%A0%9C%EC%A3%BC" target="_blank">📍 지도</a><a class="btn btn-book" href="https://www.aquaplanet.co.kr/jeju/" target="_blank">🎫 예약</a></div></div></div></div>
-    <div class="item"><div class="row"><div class="time">17:30</div><div class="body"><div class="pname">광치기해변</div><div class="desc">성산일출봉 배경 사진</div><div class="memo">일몰 시간대 분위기 좋음</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EA%B4%91%EC%B9%98%EA%B8%B0%ED%95%B4%EB%B3%80" target="_blank">📍 지도</a></div></div></div></div>
-    <div class="item"><div class="row"><div class="time">19:00</div><div class="body"><div class="pname">제주본연 흑돼지<span class="tag meal">식사</span><span class="tag drink">술</span></div><div class="desc">흑돼지 삼겹살 + 소주</div><div class="memo">🍶 평점 5.0 · 차 두고 도보/택시</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%EB%B3%B8%EC%97%B0%20%ED%9D%91%EB%8F%BC%EC%A7%80%20%EC%84%B1%EC%82%B0%EB%B3%B8%EC%A0%90" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">14:30</div><div class="body"><div class="pname">아쿠아플라넷 제주<span class="tag act">액티비티</span></div><div class="desc">아쿠아리움 + 해녀 공연 (2~3h)</div><div class="memo">실내라 비와도 OK · 18시 마감</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.4327833,126.9278223,'아쿠아플라넷제주')">📍 지도</a><a class="btn btn-book" href="https://www.aquaplanet.co.kr/jeju/" target="_blank">🎫 예약</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">17:30</div><div class="body"><div class="pname">광치기해변</div><div class="desc">성산일출봉 배경 사진</div><div class="memo">일몰 시간대 분위기 좋음</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.4524173,126.9246894,'광치기해변')">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">19:00</div><div class="body"><div class="pname">제주본연 흑돼지<span class="tag meal">식사</span><span class="tag drink">술</span></div><div class="desc">흑돼지 삼겹살 + 소주</div><div class="memo">🍶 평점 5.0 · 차 두고 도보/택시</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.4574,126.9275,'제주본연흑돼지성산본점')">📍 지도</a></div></div></div></div>
     <div class="item"><div class="row"><div class="time">21:00</div><div class="body"><div class="pname">동부 성산 숙소</div><div class="desc">1박 (도보/택시 복귀)</div></div></div></div>
     <div class="note">🍶 낮 일정 끝내고 체크인 → 차 두고 → 흑돼지집. 성산 숙소를 식당 근처로 잡으면 도보권.</div>
   </div>
@@ -104,13 +126,16 @@
   <div class="col">
     <div class="col-head">📅 Day 3 — 7/14 (화)<span class="meta">성산권 · 저녁 비행기</span></div>
     <div class="item"><div class="row"><div class="time">08:00</div><div class="body"><div class="pname">숙소 조식 / 카페<span class="tag meal">식사</span></div><div class="desc">아침 — 등반 전 가볍게</div><div class="memo">여친 아침 필수</div></div></div></div>
-    <div class="item"><div class="row"><div class="time">09:30</div><div class="body"><div class="pname">성산일출봉</div><div class="desc">정상 등반 (왕복 1시간)</div><div class="memo">유네스코 · 입장 5,000원</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%84%B1%EC%82%B0%EC%9D%BC%EC%B6%9C%EB%B4%89" target="_blank">📍 지도</a></div></div></div></div>
-    <div class="item"><div class="row"><div class="time">11:00</div><div class="body"><div class="pname">가시아방국수<span class="tag meal">식사</span></div><div class="desc">고기국수 · 비빔국수 · 수육</div><div class="memo">★웨이팅 심함 → 캐치테이블 원격줄서기(앱 미리 가입+결제등록) · 일출봉 등반 중 걸기 · 수요일 휴무(화 OK)</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EA%B0%80%EC%8B%9C%EC%95%84%EB%B0%A9%EA%B5%AD%EC%88%98" target="_blank">📍 지도</a><a class="btn btn-book" href="https://app.catchtable.co.kr/ct/shop/abangnoodle_jeju" target="_blank">🎫 캐치테이블</a></div></div></div></div>
-    <div class="item"><div class="row"><div class="time">12:30</div><div class="body"><div class="pname">프리츠커피 (Fritz)<span class="tag cafe">카페</span></div><div class="desc">일출봉 정면뷰 + 베이커리</div><div class="memo">☕ 여친 커피 타임 · 평점 4.6 · 빵 맛집</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%ED%94%84%EB%A6%AC%EC%B8%A0%EC%BB%A4%ED%94%BC%20%EC%84%B1%EC%82%B0" target="_blank">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">09:30</div><div class="body"><div class="pname">성산일출봉</div><div class="desc">정상 등반 (왕복 1시간)</div><div class="memo">유네스코 · 입장 5,000원</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.458056,126.9425,'성산일출봉')">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">11:00</div><div class="body"><div class="pname">가시아방국수<span class="tag meal">식사</span></div><div class="desc">고기국수 · 비빔국수 · 수육</div><div class="memo">★웨이팅 심함 → 캐치테이블 원격줄서기(앱 미리 가입+결제등록) · 일출봉 등반 중 걸기 · 수요일 휴무(화 OK)</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.438616,126.918065,'가시아방국수')">📍 지도</a><a class="btn btn-book" href="https://app.catchtable.co.kr/ct/shop/abangnoodle_jeju" target="_blank">🎫 캐치테이블</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">12:30</div><div class="body"><div class="pname">프리츠커피 (Fritz)<span class="tag cafe">카페</span></div><div class="desc">일출봉 정면뷰 + 베이커리</div><div class="memo">☕ 여친 커피 타임 · 평점 4.6 · 빵 맛집</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.4595153,126.9301841,'프리츠커피성산')">📍 지도</a></div></div></div></div>
     <div class="item"><div class="row"><div class="time">14:00</div><div class="body"><div class="pname">자유시간</div><div class="desc">동부 해안 드라이브 / 쇼핑</div><div class="memo">렌터카 반납 시간 역산</div></div></div></div>
     <div class="item"><div class="row"><div class="time">17:30</div><div class="body"><div class="pname">렌터카 반납 → 공항</div><div class="memo">반납 후 셔틀</div></div></div></div>
-    <div class="item"><div class="row"><div class="time">18:30</div><div class="body"><div class="pname">제주공항</div><div class="desc">체크인 · 저녁</div><div class="memo">국내선 1시간 전 도착</div><div class="btns"><a class="btn btn-map" href="https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD" target="_blank">📍 지도</a></div></div></div></div>
-    <div class="item"><div class="row"><div class="time">20:05</div><div class="body"><div class="pname">✈️ 제주 → 김포 출발</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">18:30</div><div class="body"><div class="pname">제주공항</div><div class="desc">체크인 · 저녁</div><div class="memo">국내선 1시간 전 도착</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(33.507,126.4927,'제주국제공항')">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">20:05</div><div class="body"><div class="pname">✈️ 제주 → 김포 출발</div><div class="desc">제주항공 7C134 · 김포 21:20 도착</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">21:20</div><div class="body"><div class="pname">김포공항 도착 · 차 픽업 🅿️</div><div class="desc">짐 찾고 주차장에서 자차 회수</div><div class="memo">★주차 위치 메모 확인 (출발 때 적어둔 곳)</div></div></div></div>
+    <div class="item"><div class="row"><div class="time">22:00</div><div class="body"><div class="pname">여친 집 데려다주기 🚗</div><div class="desc">김포 → 중랑구 (약 40~50분)</div><div class="memo">용마산로106길 33 · 늦은 시간이라 안전운전</div><div class="btns"><a class="btn btn-map" href="javascript:void(0)" onclick="return openNaver(37.5797,127.0905,'용마산로106길 33')">📍 지도</a></div></div></div></div>
+    <div class="item"><div class="row"><div class="time">23:00</div><div class="body"><div class="pname">🏠 집 복귀</div><div class="desc">중랑구 → 강남 (약 30~40분)</div><div class="memo">테헤란로37길 34 · 여행 끝! 수고했어</div></div></div></div>
   </div>
 
 </div>
@@ -124,6 +149,7 @@
     <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">가시아방국수 웨이팅</div><div class="cl-m">캐치테이블 앱 미리 가입 + 결제수단 등록</div></div></div>
     <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">렌터카</div><div class="cl-m">완전자차 옵션 · 제주패스·카모아 비교</div></div></div>
     <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">흑돼지 / 갈치 / 횟집</div><div class="cl-m">주말·피크 예약 권장 · 올레왕갈치 ☎ 064-732-2022</div></div></div>
+    <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">김포공항 주차</div><div class="cl-m">★출발 시 주차 위치(주차동·층·구역) 사진/메모 — 도착 때 차 찾기용</div></div></div>
     <div class="cl-item"><div class="cl-box">□</div><div><div class="cl-q">숙소</div><div class="cl-m">★1일차 중문·서귀포 / 2일차 성산 (저녁 식당 도보권)</div></div></div>
   </div>
   <div class="card">
