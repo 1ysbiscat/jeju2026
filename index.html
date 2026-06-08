@@ -60,20 +60,35 @@
 </style>
 
 
+
 <script>
 function openNaver(lat, lng, name, placeId) {
   var appName = "jeju2026.github.io";
   var appUrl = "nmap://place?lat=" + lat + "&lng=" + lng + "&name=" + encodeURIComponent(name) + "&appname=" + appName;
   var webUrl = "https://map.naver.com/p/entry/place/" + placeId;
-  var clickedAt = Date.now();
+  var didHide = false;
+
+  // 앱으로 전환되면 페이지가 숨겨짐 -> 폴백 취소 플래그
+  function onHide() { didHide = true; }
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) didHide = true;
+  });
+  window.addEventListener("pagehide", onHide);
+  window.addEventListener("blur", onHide);
+
   // 앱 호출 시도
   window.location.href = appUrl;
-  // 1.5초 내 앱 전환 안 되면 웹으로 폴백
+
+  // 1.5초 후, 앱 전환이 감지되지 않았을 때만 웹으로 폴백 (새 탭)
   setTimeout(function() {
-    if (Date.now() - clickedAt < 2000) {
-      window.location.href = webUrl;
+    document.removeEventListener("visibilitychange", onHide);
+    window.removeEventListener("pagehide", onHide);
+    window.removeEventListener("blur", onHide);
+    if (!didHide && !document.hidden) {
+      window.open(webUrl, "_blank");
     }
   }, 1500);
+
   return false;
 }
 </script>
